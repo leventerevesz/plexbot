@@ -31,8 +31,16 @@ async def download_video(update: Update, context: CallbackContext) -> None:
 
 
 async def download_with_yt_dlp(url, dest) -> bool:
+    format_str = ''
+
     proc = await asyncio.create_subprocess_shell(
-        f'yt-dlp --sponsorblock-remove default -o "{dest}/%(title)s.%(ext)s" {url}',
+        f'yt-dlp '
+        f'-o "{dest}/%(title)s.%(ext)s" '
+        # prefer 1080p
+        # limit codec to h265|h264|vp8|h263 and aac|mp4a|mp3
+        f'-S "+res:1080,codec:h265:aac,br"'
+        f'--sponsorblock-remove default '
+        f'{url}',
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.PIPE)
     
