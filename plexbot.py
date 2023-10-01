@@ -60,7 +60,7 @@ async def download_with_yt_dlp(url, dest) -> bool:
         f'-o "{dest}/%(title)s.%(ext)s" '
         # prefer 1080p
         # limit codec to h265|h264|vp8|h263 and aac|mp4a|mp3
-        f'-S "+res:1080,codec:h265:aac,br"'
+        f'-S "+res:1080,codec:h265:aac,br" '
         f'--sponsorblock-remove default '
         f'{url}',
         stdout=asyncio.subprocess.PIPE,
