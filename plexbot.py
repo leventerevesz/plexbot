@@ -67,13 +67,16 @@ async def download_with_yt_dlp(url, dest) -> bool:
         stderr=asyncio.subprocess.PIPE)
     
     stdout, stderr = await proc.communicate()
+    success = proc.returncode == 0
 
     if stdout:
         logging.debug(f'[stdout]\n{stdout.decode()}')
     if stderr:
         logging.debug(f'[stderr]\n{stderr.decode()}')
+    if not success:
+        logging.error(f'[stderr]\n{stderr.decode()}')
 
-    return (proc.returncode == 0)
+    return (success)
 
 
 def main() -> None:
