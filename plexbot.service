@@ -12,6 +12,7 @@ Restart=on-failure
 RestartSec=60
 User=levente
 Group=server
+UMask=0002
 
 [Install]
 WantedBy=multi-user.target
