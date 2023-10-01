@@ -8,7 +8,7 @@ from telegram.ext import ApplicationBuilder, MessageHandler, CallbackContext, fi
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.DEBUG
+    level=logging.INFO
 )
 
 configpath = Path("~/.config/plexbot/config").expanduser()
