@@ -1,0 +1,17 @@
+[Unit]
+Description=A Telegram bot that downloads stuff on your server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/plexbot
+ExecStop=/bin/kill -s TERM $MAINPID
+Environment=PYTHONUNBUFFERED=1
+Restart=on-failure
+RestartSec=60
+User=levente
+Group=server
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "plexbot"
+description = "A Telegram bot that downloads stuff on your server"
+version = "1.0.0"
+authors = [
+    {name = "Levente Révész", email = "levente.revesz@gmail.com"},
+]
+requires-python = ">=3.9"
+license = {text = "MIT"}
+dependencies = ["python-telegram-bot", "yt-dlp"]
+
+[project.scripts]
+plexbot = "plexbot:main"
